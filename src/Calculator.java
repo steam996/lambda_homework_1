@@ -6,11 +6,18 @@ public class Calculator {
     BinaryOperator<Integer> plus = (a,b) -> a + b;
     BinaryOperator<Integer> minus = (a,b) -> a - b;
     BinaryOperator<Integer> multiply = (a,b) -> a * b;
-    BinaryOperator<Integer> devide = (a,b) -> a / b;
+    BinaryOperator<Integer> devide = (a,b) -> {
+       if (b != 0) {
+           return (a / b);
+       } else {
+           System.out.println("Вы пытаетесь делить на ноль. А этого делать нельзя!");
+           return 0;
+       }
+    };
 
     UnaryOperator<Integer> pow = a -> a * a;
-    // условие тернарного оператора должно быть заключено в скобки
-    UnaryOperator<Integer> abs = x -> (x > 0) ? x : x * -1;
+    // срабатывает без ошибок
+    UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
 
     Predicate<Integer> isPositive = x -> x > 0;
 
